@@ -215,3 +215,28 @@ if __name__ == '__main__':
                 print(classification_report(testY,predictions))
                 print(confusion_matrix(testY, predictions, labels=[1,0]))
 print("bukatu da")
+
+#--PARA VER LOS ENTORNOS--
+#anaconda-navigator
+#--ELEGIR ENTORNO--
+#conda activate sad 
+#--LIBRERIAS--
+#pip3 install pickle5
+#pip3 install imblearn
+#pip3 install pandas
+#pip3 install scikit-learn
+#pip3 install datetime--solo si da error 
+#--EJECUTAR RECETAS--
+#python plantillaExamenSinProcesadoKNN.py -k 1 -K 3 -d 1 -D 3 -o prueba.csv
+#python PlantillaArbolesSinPreprocesar.py -k 1 -d 1 -D 1 -m 3 -M 6 -o fsinPro.csv
+
+#RESULTADOS SIN PREPROCESO
+#Para este experimento se ha usado el archivo knn_no_pre.py (python knn_no_pre.py -k 3 -d 1 -m uniform -o fnopre.csv) en la versión de Python 2.7. Se ha utilizado la semilla 42 para la elección de las instancias para el train.
+
+#Los resultados obtenidos en primer lugar, sin preprocesado (con un k = 3, p = 1 y un peso “uniform”), nos dan un f1_score micro, macro y weighted de 0.95, 0.96 y 0.96 respectivamente. Podemos confirmar que el modelo da unos resultados muy altos para no haber preprocesado los datos. A continuación veremos si los resultados han mejorado aplicando el reescalado y el undersampling.
+RESULTADOS CON PREPROCESO
+#Para este experimento se han usado los archivos knn_ex.sh (./knn_ex.sh 3 5 1) y knn_pre.py en la versión de Python 2.7. Se ha utilizado la semilla 42 para la elección de las instancias para el train.
+
+#Los resultados obtenidos ahora han mejorado en 0.2 en todos los f_score con k = 3, p = 1 y un peso “uniform”. Para k = 5, los resultados son los mismos que los obtenidos sin preproceso.
+
+#Una vez visto esto, podemos confirmar que la elección de los preprocesos ha sido correcta por la mejora obtenida con k = 3. Es normal ver la reducción del f_score con k = 5 ya que existen más vecinos que votan en la decisión de la clase de una dicha instancia. Es por ello, que al obtener los mismos valores con tres vecinos que con cinco, podemos confirmar que la elección de los preprocesos ha sido correcta.
